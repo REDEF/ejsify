@@ -1,8 +1,14 @@
 var ejs = require('ejs')
   , through = require('through')
 
+
+var extensions = {
+  ejs: 1,
+  html: 1
+};
+
 module.exports = function(file, options) {
-  if (!/\.ejs$/.test(file)) return through()
+  if (!extensions[file.split(".").pop()]) return through();
 
   options = options || {}
 
